@@ -1,149 +1,177 @@
-
 import streamlit as st
 
-# ------------------------------
-# CONFIG PAGE
-# ------------------------------
 st.set_page_config(
     page_title="Portfolio - Cheikh SENE",
     page_icon="📊",
     layout="wide"
 )
 
-# ------------------------------
-# CUSTOM STYLE
-# ------------------------------
+# ----------- CSS PREMIUM -----------
 st.markdown("""
 <style>
-.big-title {
+
+body {
+    background-color: #F5F7FA;
+}
+
+/* HEADER */
+.hero {
+    padding: 80px;
+    background: linear-gradient(135deg, #2C6AFF 0%, #3B8DFF 100%);
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+.hero h1 {
     font-size: 60px;
     font-weight: 900;
-    text-align: center;
-    color: #2C6AFF;
+    margin-bottom: -10px;
 }
-.subtitle {
+.hero h3 {
     font-size: 22px;
-    text-align: center;
-    margin-top: -15px;
-    color: #333;
+    font-weight: 300;
 }
+
+/* TITRES DE SECTION */
 .section-title {
-    font-size: 35px;
+    font-size: 36px;
     font-weight: 800;
     margin-top: 40px;
-    color: #2C2C2C;
-}
-.project-card {
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #F7F9FC;
-    border: 1px solid #E2E6EB;
     margin-bottom: 20px;
+    color: #1E1E1E;
 }
+
+/* CARTES */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #E4E7EB;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.card h4 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+.card p {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 70px;
+    padding: 25px;
+    text-align: center;
+    font-size: 15px;
+    opacity: 0.6;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
-# ------------------------------
-# SIDEBAR
-# ------------------------------
+# -------- SIDEBAR --------
 st.sidebar.title("📌 Navigation")
+page = st.sidebar.radio("Menu :", ["🏠 Accueil", "📚 Projets", "💼 Expériences", "🛠 Compétences", "📞 Contact"])
 
-page = st.sidebar.radio("Aller vers :", [
-    "🏠 Accueil",
-    "📚 Projets",
-    "💼 Expériences",
-    "🛠 Compétences",
-    "📞 Contact"
-])
-
-# ------------------------------
-# ACCUEIL
-# ------------------------------
+# -------- ACCUEIL --------
 if page == "🏠 Accueil":
-    st.markdown('<div class="big-title">Cheikh SENE</div>', unsafe_allow_html=True)
-    st.markdown('<div class="subtitle">Data Scientist • Machine Learning • IA • Statistique avancée</div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="hero">
+        <h1>Cheikh SENE</h1>
+        <h3>Data Scientist • Machine Learning • IA • Statistiques avancées</h3>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.write("""
-    Bienvenue sur mon portfolio interactif.  
-    Je suis passionné par la Data Science, le Machine Learning, les analyses statistiques 
-    et la création de solutions intelligentes.
+    Bienvenue sur mon portfolio professionnel.  
+    Je suis spécialisé en Data Science, Machine Learning et analyses statistiques.
     """)
 
-    st.success("👉 Explore mes projets, expériences et compétences via le menu à gauche !")
 
-# ------------------------------
-# PROJETS
-# ------------------------------
+# -------- PROJETS --------
 elif page == "📚 Projets":
     st.markdown('<div class="section-title">📚 Mes Projets</div>', unsafe_allow_html=True)
 
-    st.markdown("""
-    <div class="project-card">
-    <h3>Modélisation prédictive du risque financier – CARSAT Nord-Est</h3>
-    <p>Modèles XGBoost, Random Forest, preprocessing, analyse des risques, dashboard complet.</p>
-    <a href="https://github.com/SENECheikh" target="_blank">🔗 Voir sur GitHub</a>
-    </div>
-    """, unsafe_allow_html=True)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("""
+        <div class="card">
+            <h4>Modélisation prédictive du risque financier</h4>
+            <p>Projet de Machine Learning à la CARSAT Nord-Est (Random Forest, XGBoost, Streamlit App).</p>
+            https://github.com/SENECheikh🔗 Voir sur GitHub</a>
+        </div>
+        """, unsafe_allow_html=True)
 
-    st.markdown("""
-    <div class="project-card">
-    <h3>Application Streamlit de pilotage statistique</h3>
-    <p>Dashboard interactif avec filtres dynamiques, graphiques et indicateurs clés.</p>
-    <a href="https://github.com/SENECheikh" target="_blank">🔗 Voir sur GitHub</a>
-    </div>
-    """, unsafe_allow_html=True)
+        st.markdown("""
+        <div class="card">
+            <h4>Projet NLP – Classification de textes</h4>
+            <p>Vectorisation, TF-IDF, modèles de langage avancés pour la classification.</p>
+            https://github.com/SENECheikh🔗 Voir sur GitHub</a>
+        </div>
+        """, unsafe_allow_html=True)
 
-    st.markdown("""
-    <div class="project-card">
-    <h3>Projets Machine Learning (NLP, Classification, Forecasting)</h3>
-    <p>Ensemble de notebooks ML démontrant mes compétences Python + Data Science.</p>
-    <a href="https://github.com/SENECheikh" target="_blank">🔗 Voir sur GitHub</a>
-    </div>
-    """, unsafe_allow_html=True)
+    with col2:
+        st.markdown("""
+        <div class="card">
+            <h4>Dashboard Streamlit statistique</h4>
+            <p>Exploration et visualisation d'indicateurs dynamiques.</p>
+            https://github.com/SENECheikh🔗 Voir sur GitHub</a>
+        </div>
+        """, unsafe_allow_html=True)
 
-# ------------------------------
-# EXPÉRIENCES
-# ------------------------------
+        st.markdown("""
+        <div class="card">
+            <h4>Forecasting / Série temporelles</h4>
+            <p>Modèles ARIMA, Prophet & LSTM appliqués à des données réelles.</p>
+            https://github.com/SENECheikh🔗 Voir sur GitHub</a>
+        </div>
+        """, unsafe_allow_html=True)
+
+
+# -------- EXPÉRIENCES --------
 elif page == "💼 Expériences":
-    st.markdown('<div class="section-title">💼 Mes Expériences</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">💼 Expériences</div>', unsafe_allow_html=True)
 
     st.subheader("📌 CARSAT Nord-Est — Chargé d'Études Statistiques (2023–2025)")
     st.write("""
-    - Modélisation prédictive  
-    - Statistiques avancées  
-    - Automatisations Python  
+    - Développement d’un modèle prédictif (ML)  
+    - Automatisation Python  
     - Application Streamlit  
-    - Études d’impact financier  
+    - Analyses statistiques avancées  
     """)
 
     st.markdown("---")
 
-    st.subheader("📘 Projets Académiques – MSc Data Management / CEPOPP")
+    st.subheader("📚 Projets Académiques — MSc Data Management")
     st.write("""
-    - Machine Learning supervisé & non supervisé  
+    - Data Science  
+    - Économétrie  
     - Visualisation avancée  
     - Feature Engineering  
-    - Économétrie appliquée  
     """)
 
-# ------------------------------
-# COMPÉTENCES
-# ------------------------------
+# -------- COMPÉTENCES --------
 elif page == "🛠 Compétences":
     st.markdown('<div class="section-title">🛠 Compétences</div>', unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
-
     with col1:
         st.subheader("🔹 Machine Learning")
         st.write("""
-        - Régression  
-        - Classification  
+        - Régression, Classification  
         - NLP  
-        - Séries temporelles  
+        - Time Series  
+        - Évaluation & Interprétabilité  
         """)
 
-        st.subheader("🔹 Outils & Langages")
+        st.subheader("🔹 Outils")
         st.write("""
         - Python  
         - Git/GitHub  
@@ -155,25 +183,29 @@ elif page == "🛠 Compétences":
         st.subheader("🔹 Visualisation")
         st.write("""
         - Plotly  
-        - Matplotlib  
         - Seaborn  
+        - Matplotlib  
         """)
 
-        st.subheader("🔹 Autres")
+        st.subheader("🔹 Statistiques")
         st.write("""
-        - Statistiques  
-        - Feature Engineering  
-        - Nettoyage de données  
+        - Inférentielle  
+        - Tests statistiques  
+        - Modèles linéaires  
         """)
 
-# ------------------------------
-# CONTACT
-# ------------------------------
+# -------- CONTACT --------
 elif page == "📞 Contact":
     st.markdown('<div class="section-title">📞 Contact</div>', unsafe_allow_html=True)
 
     st.write("📧 Email : tonemail@example.com")
-    st.write("🔗 LinkedIn : https://linkedin.com/in/xxxx")
+    st.write("🔗 LinkedIn : https://linkedin.com/in/xxxxx")
     st.write("💻 GitHub : https://github.com/SENECheikh")
 
-    st.success("Merci de visiter mon portfolio 🙌")
+
+# -------- FOOTER --------
+st.markdown("""
+<div class="footer">
+    © 2026 • Portfolio réalisé avec Streamlit
+</div>
+""", unsafe_allow_html=True)
